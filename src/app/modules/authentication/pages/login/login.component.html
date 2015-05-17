@@ -1,0 +1,58 @@
+<div>
+  <logo-svg class="h-auto w-36 text-slate-900 dark:text-white"></logo-svg>
+  <h2 class="mt-6 text-3xl font-semibold text-slate-900 dark:text-white" i18n>Connectez-vous</h2>
+  <p class="mt-2 text-sm text-slate-500 dark:text-slate-400" i18n>
+    Admin Panel - Administration de votre plateforme.
+  </p>
+</div>
+
+<!-- Session Status -->
+<alert-success *ngIf="message$ | async; let message" [message]="message" class="mt-4"></alert-success>
+
+<!-- Validation Errors -->
+<alert-errors *ngIf="error$ | async; let error" [message]="error" class="mt-4"></alert-errors>
+
+<form [formGroup]="form" (submit)="submit()" class="mt-10 space-y-6">
+  <!-- Email Address -->
+  <div>
+    <input-overlaping-label
+      label="Adresse E-mail"
+      i18n-label="attr-email"
+      name="email"
+      formControlName="email"
+    ></input-overlaping-label>
+  </div>
+  
+  <!-- Password -->
+  <div>
+    <input-overlaping-label
+      label="Mot de passe"
+      i18n-label="attr-password"
+      name="password"
+      [type]="'password'"
+      formControlName="password"
+    ></input-overlaping-label>
+  </div>
+
+  <div class="flex items-center justify-between">
+    <label for="remember-me" class="flex items-center cursor-pointer">
+      <input id="remember-me" name="remember-me" type="checkbox" class="w-4 h-4 bg-white rounded text-primary-600 border-slate-300 focus:ring-primary-500 dark:bg-gray-800 dark:border-slate-700 dark:focus:ring-offset-gray-800">
+      <span class="block ml-2 text-sm text-slate-700 dark:text-slate-300" i18n>Se souvenir de moi</span>
+    </label>
+
+    <div class="text-sm">
+      <a routerLink="/auth/forgot-password" class="font-medium text-primary-600 hover:text-primary-500" i18n>Mot de passe oublié?</a>
+    </div>
+  </div>
+
+  <div>
+    <button-primary type="submit" class="justify-center w-full group" [loading$]="(loading$)">
+      <span *ngIf="(loading$ | async) !== null" class="absolute inset-y-0 left-0 flex items-center pl-3">
+        <svg class="w-5 h-5 text-primary-500 group-hover:text-primary-400" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M10 1C7.51472 1 5.5 3.01472 5.5 5.5V9H5C3.89543 9 3 9.89543 3 11V17C3 18.1046 3.89543 19 5 19H15C16.1046 19 17 18.1046 17 17V11C17 9.89543 16.1046 9 15 9H14.5V5.5C14.5 3.01472 12.4853 1 10 1ZM13 9V5.5C13 3.84315 11.6569 2.5 10 2.5C8.34315 2.5 7 3.84315 7 5.5V9H13Z" />
+        </svg>
+      </span>
+      <span i18n>Se connecter</span>
+    </button-primary>
+  </div>
+</form>
