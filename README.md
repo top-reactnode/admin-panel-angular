@@ -4,22 +4,6 @@
 
 > This project use Angular 13+
 
-### ⏳ Installation
-
-Clone the repo locally:
-```bash
-git clone https://github.com/laravelcm/angular-admin-panel.git cpanel.angular && cd cpanel.angular
-```
-
-Install NPM dependencies:
-```bash
-npm i
-```
-
-Setup configuration:
-```bash
-cp .env.example .env
-```
 
 ### 🖐 Requirements
 
